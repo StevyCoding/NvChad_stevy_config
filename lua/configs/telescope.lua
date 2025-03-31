@@ -1,11 +1,27 @@
+dofile(vim.g.base46_cache .. "telescope")
 
-require("telescope.builtin").find_files({hidden = true})
-require("telescope").load_extension "file_browser"
-
-require("telescope").setup({
+return {
   defaults = {
-      layout_config = {
-        width = 1200,
+    file_ignore_patterns = { 
+      "node_modules" 
+    },
+    prompt_prefix = "   ",
+    selection_caret = " ",
+    entry_prefix = " ",
+    sorting_strategy = "ascending",
+    layout_config = {
+      horizontal = {
+        prompt_position = "top",
+        preview_width = 0.55,
       },
+      width = 0.87,
+      height = 0.80,
+    },
+    mappings = {
+      n = { ["q"] = require("telescope.actions").close },
+    },
   },
-})
+
+  extensions_list = { "themes", "terms" },
+  extensions = {},
+}

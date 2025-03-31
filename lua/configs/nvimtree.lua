@@ -1,24 +1,34 @@
-local options  = {
-    git = {
-        enable = true,
-        ignore = false,
-        timeout = 500,
-      },
-actions = {
-open_file = {
-resize_window = true,
-},
-},
-update_focused_file = {
-  enable = true,
-},
-view = {
-side = "left",
-adaptive_size = true
-},
-filters = {
-dotfiles = false,
-}
-}
+dofile(vim.g.base46_cache .. "nvimtree")
 
-require("nvim-tree").setup(options)
+return {
+  filters = { dotfiles = false },
+  disable_netrw = true,
+  hijack_cursor = true,
+  sync_root_with_cwd = true,
+  update_focused_file = {
+    enable = true,
+    update_root = false,
+  },
+  view = {
+    adaptive_size = true,
+    preserve_window_proportions = true,
+  },
+  renderer = {
+    root_folder_label = false,
+    highlight_git = true,
+    indent_markers = { enable = true },
+    icons = {
+      glyphs = {
+        default = "󰈚",
+        folder = {
+          default = "",
+          empty = "",
+          empty_open = "",
+          open = "",
+          symlink = "",
+        },
+        git = { unmerged = "" },
+      },
+    },
+  },
+}
